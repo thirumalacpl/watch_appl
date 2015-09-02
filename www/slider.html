@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <!-- jQuery core -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    
+    <!-- AJAX-ZOOM main js and css file -->
+    <script type="text/javascript" src="../axZm/jquery.axZm.js"></script>
+    <link rel="stylesheet" type="text/css" href="../axZm/axZm.css" media="all" />
+    
+    <!-- AJAX-ZOOM imageSlider extension -->
+    <link rel="stylesheet" type="text/css" href="../axZm/extensions/jquery.axZm.imageSlider.js" media="all" />
+    <script type="text/javascript" src="../axZm/extensions/jquery.axZm.imageSlider.js"></script>
+
+</head>
+<body>
+<!-- Container where AJAX-ZOOM will be loaded into. 
+Everything inside axZmPlayerCont is removed when AJAX-ZOOM is loaded-->    
+<DIV id="axZmPlayerOuter" left style="width: 800px; min-height: 430px; float: left;">
+    <DIV id='axZmPlayerCont' style='width: 800px; min-height: 400px; float: left'>
+    </DIV>
+</DIV>
+
+<script type="text/javascript">
+// This code below is updated dynamically when you use the options configurator. 
+
+jQuery.fn.ajaxZoomSlider({
+	"parameter": "zoomDir=/pic/slide_2_1",
+	"divID": "axZmPlayerCont"
+});
+
+</script>
+
+</body>
+</html>

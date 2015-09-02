@@ -1,0 +1,2122 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<title>Watchguard</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	
+	 <script src="js/jquery.mobile.min.js"></script>
+	 <script src="js/jquery-ui.min.js"></script>
+	 <script src="js/jquery-1.11.3.min.js"></script>
+<!-- 	 <script src="js/jquery.min.js"></script>  
+
+     <script src="js/jquery-1.10.2.min.js"></script> -->
+
+ 
+    
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+	<link rel="stylesheet" href="css/font-awesome.min.css" />
+	<link rel="stylesheet" href="css/jquery.mobile.min.css" />
+	<link rel="stylesheet" href="vendor/waves/waves.min.css" />
+	<link rel="stylesheet" href="vendor/wow/animate.css" />
+	<link rel="stylesheet" href="css/nativedroid2.css" />
+	<!--<link rel="stylesheet" type="text/css" href="css/style.css">-->
+    <link rel="stylesheet" type="text/css" href="css/file.css">
+    <link rel="stylesheet" type="text/css" href="css/dashboard.css">
+
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<!--upload-->    
+    <script src="app.js" type="text/javascript"></script>
+    <script src="fastclick.js" type="text/javascript"></script>
+    <script src="toastr.min.js" type="text/javascript"></script>
+	<script src="addtohomescreen.min.js" type="text/javascript"></script>
+	<script src="remoteserver.js" type="text/javascript"></script>
+	<script src="support.js" type="text/javascript"></script>
+
+<!--upload end-->
+
+
+<style type="text/css">
+  div.upload {
+    width: 94px;
+    height: 94px;
+    background: url(images/upload_button-icon.png);
+}
+div.upload input {
+    display: block !important;
+    width: 94px !important;
+    height: 94px !important;
+    opacity: 0;
+}
+</style>
+
+
+	</head>
+	<body>
+
+
+   <div data-role="page" id="pageone" class="bg">
+  
+<script type="text/javascript" src="js/index.js"></script>
+  <div data-role="main" class="ui-content">
+   <div style="text-align:center;margin-top: 100px;"><img src="images/logo.png"></div>
+
+
+
+
+   <div class="col-xs-12 col-sm-6 col-md-4">
+     <form method="post" action="" style="margin-top: 30px;" id="check-watchuser"> 
+            <div class="box" style="margin-top: 25px;">
+
+         <div class="control-group" style="border-bottom: 1px solid rgba(151, 151, 151, 0.58);margin-bottom: 13px;">
+        <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+        <!--<label class="control-label visible-ie8 visible-ie9">Username</label>-->
+        <div class="controls">
+          <div class="input-icon left">
+            <i class=""><img src="images/user-icon.png" alt=""></i>
+            <input class="input_text" type="text" autocomplete="off" placeholder="Username" name="username" id="username">
+          </div>
+        </div>
+      </div>  
+
+                     
+<div class="control-group" style="border-bottom: 1px solid rgba(151, 151, 151, 0.58);margin-bottom: 13px;">
+        <!--<label class="control-label visible-ie8 visible-ie9">Password</label>-->
+        <div class="controls">
+          <div class="input-icon left">
+            <i class="icon-lock"><img src="images/pass-icon.png" alt=""></i>
+            <input class="input_text" type="password" autocomplete="off" placeholder="********" name="password" id="password">
+          </div>
+        </div>
+      </div>
+
+               <div class="ui-grid-b" style="margin-top: 30px;">
+                 <div class="ui-block-a" style="width:15% !important;">
+                 <br>
+                 </div>
+                 <div class="ui-block-b" style="width:70% !important;"><a href="#" class="ui-btn ui-corner-all ui-shadow logbutton sign_in" id="submit">Login</a></div>
+                 <div class="ui-block-c" style="width:15% !important;"></div>
+                 </div>
+
+              </div>
+              </form>
+            </div>
+
+
+  </div>
+
+
+
+</div> 
+
+
+
+<!--page one end-->
+
+
+
+ <div data-role="page" id="dashboard">
+    <script type="text/javascript" src="js/dashboard.js"></script>
+      <!-- <nd2-include data-src="examples/fragments/panel.left.html"></nd2-include> -->
+
+      <div data-role="panel" id="bottomsheet" data-animate="false" data-position='bottom' data-display="overlay">
+    <!--     <nd2-include data-src="examples/fragments/bottom.sheet.html"></nd2-include> -->
+      </div>
+
+
+
+      <div data-role="header" data-position="fixed" class="wow fadeInDown" data-wow-delay="0.2s">
+       <a href="#" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='1.2s' id="dashlogout"><img src="images/logout1.png"></a>
+       <!--  <a href="#leftpanel" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='0.8s'><i class="zmdi zmdi-menu"></i></a> -->
+        <h1 class="wow fadeIn" data-wow-delay='0.4s' style="text-align:center;">Supervisor</h1>
+      </div>
+
+   <div class="ui-panel-wrapper" style="background-color:#282c35;background-size:100% 100%;">
+   <div role="main" class="ui-content" data-inset="false">
+<div id="demo">
+    <div class="ui-grid-solo" style="text-align: center;">
+    <div style="margin-top: 20px;">
+     <a style="text-align: center;color: white;" id="supervisor_name"></a>
+     <br>
+     <a style="text-align: center;color: white;font-size: 12px; font-weight: 300;" id="city_name"></a>
+   </div>
+
+    </div>
+    </div>
+
+  <div class="ui-grid-solo" style="margin-top: 20px;">
+     <div class="ui-grid-a ">
+
+
+    <div class="ui-block-a grid_main_1 ui-btn ui-corner-all ui-shadow logbutton waves-effect waves-button " id="new_verification">
+
+        <a href="#" class="waves-effect waves-button ui-link waves-effect waves-button waves-effect waves-button" style="text-decoration:none;"><img src="images/new-verification.png" class="img_pad_1" style="margin-right: -5px;">
+        <sup style="text-decoration:none;    vertical-align: 337%;
+    padding-top: -51% !important;
+   
+    text-decoration: none !important;
+    list-style: none;
+    background: #E24242;
+    border-radius: 50%;
+    color:#fff;
+       padding: 2% 4% 2% 5%;" id="new_veri_count">3</sup></a><br>
+        <p id="grid_opa_1"><span>Verification</span></p>
+      </div>
+       <div class="ui-block-b grid_main1_1  ui-btn ui-corner-all ui-shadow logbutton waves-effect waves-button" id="inprogress">
+        <a href="#" class="" style="    list-style: none;
+    text-decoration: none;
+    padding-bottom: 0%;"><img src="images/inprocess.png" class="img_pad_1" style="margin-right: -5px;">
+            <sup style="text-decoration:none;    vertical-align: 337%;
+    padding-top: -51% !important;
+   
+    text-decoration: none !important;
+    list-style: none;
+    background: #2572B3;
+    border-radius: 50%;
+    color:#fff;
+        padding: 2% 4% 2% 5%;" id="inprogress_count">3</sup>
+        </a><br>
+          <p id="grid_opa2_1">In progress</p>
+      </div>
+</div>
+
+
+<div class="ui-grid-solo">
+     <div class="ui-grid-a">
+      <div class="ui-block-a grid_main2_1 ui-btn ui-corner-all ui-shadow logbutton waves-effect waves-button " id="not_verified">
+
+        <a href="#" class="" style="text-decoration:none; "><img src="images/not-verified.png"  width="45" height="30" class="img_pad_1" style="margin-right: -5px;">
+            <sup style="text-decoration:none;    vertical-align: 337%;
+    padding-top: -51% !important;
+   
+    text-decoration: none !important;
+    list-style: none;
+    background: #32A582;
+    border-radius: 50%;
+    color:#fff;
+        padding: 2% 4% 2% 5%;" id="not_verified_count">0</sup>
+        </a><br>
+        <p id="grid_opa3_1"><span>Not Verified</span></p>
+      </div>
+
+
+      <div class="ui-block-b grid_main3_1 ui-btn ui-corner-all ui-shadow logbutton waves-effect waves-button" id="verified">
+        <a href="#" class="" style="text-decoration:none; "><img src="images/verified.png" class="img_pad_1" style="margin-right: -5px;">
+            <sup style="text-decoration:none;    vertical-align: 337%;
+    padding-top: -51% !important;
+   
+    text-decoration: none !important;
+    list-style: none;
+    background: #A163E4;
+    border-radius: 50%;
+    color:#fff;
+        padding: 2% 4% 2% 5%;" id="verified_count">3</sup>
+        </a><br>
+          <p id="grid_opa4_1">Verified</p>
+      </div>
+    </div>
+</div>
+
+
+</div>
+</div>          
+</div>
+</div>
+
+<!--supervisor_list_view start-->
+
+    <div data-role="page" id="supervisor_list_view">
+      <script type="text/javascript" src="js/supervisor_list.js"></script>
+
+     <!--  <nd2-include data-src="examples/fragments/panel.left.html"></nd2-include> -->
+
+      <div data-role="panel" id="bottomsheet" data-animate="false" data-position='bottom' data-display="overlay">
+        <nd2-include data-src="examples/fragments/bottom.sheet.html"></nd2-include>
+      </div>
+
+<!--panekl-->
+<!--panel-->
+
+ <div data-role="panel" id="overlayPanelajk" data-display="push" data-position="left" data-dismissible="false" data-swipe-close="false"> 
+
+  <div class='nd2-sidepanel-profile wow fadeInDown'>
+          <img class='profile-background' src="images/slide/slide-bg.png" />
+          <div class="row">
+            <div class='col-xs-12 center-xs'>
+              <div class='box box1'>
+                <img class="profile-thumbnail" src="images/slide/profile.png"  />
+             </div>
+            </div>
+             </div>
+              <div class="row" style="margin-top:5px">
+            <div class='col-xs-12 center-xs'>
+              <div class='box profile-text box1'>
+                   <strong id="supervisor_name_newlist">Jane Doe</strong>
+                <span class='subline' id="city_name_newlist">Super Power User</span>
+              
+          </div>
+        </div>
+        </div>
+
+            </div>
+
+      <ul data-role="listview" data-inset="true">
+      
+      <li id="dashboardlistnew"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "><span class="ww">Dashboard</span></a></li>
+    
+      <li id="inprogresslistnew"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "><span class="ww">IN Progress</span></a></li>
+      <li id="verifiedlistnew"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "  ><span class="ww">Verified</span></a></li>
+      <li id="new_not_verified"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right " ><span class="ww">Not verified</span></a></li>
+       <li><a href="#" id="listviewnew_signout" class="ui-btn sio a_mar">
+      <span class="ww si">Sign Out <img src="images/signout.png" alt="" class="img_sign"></span></a></li>
+  </ul>
+   
+</div> 
+
+
+      <div data-role="header" data-position="fixed" class="wow fadeInDown" data-wow-delay="0.2s">
+        <a href="#bottomsheet" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='1.2s'></a>
+        <a href="#overlayPanelajk" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='0.8s' style="margin-top:-1px"><i class="zmdi zmdi-menu"></i></a>
+        <h1 class="wow fadeIn" data-wow-delay='0.4s' style="text-align:center;">New Verification</h1>
+      </div>
+
+
+   <div role="main" class="ui-content" data-inset="false">
+
+   <a href="#" class="ui-btn ui-nodisc-icon ui-btn-icon-top full maintxt border">
+   <img src="images/viewuser-icon.png" alt="Smiley face">
+   <br>
+   <span class="uppercase"> Verification</span></a>
+
+   <div class="ui-grid-solo droparrow">
+      <div class="ui-block-a">
+        <a href="#" class="ui-link waves-effect waves-button waves-effect waves-button waves-effect waves-button"><img src="images/drop-arrow.png"></a><br>
+       
+      </div>
+    </div>
+
+ <div class="ui-grid-solo">
+ <div class="ui-block-a">
+
+<ul data-role="listview" data-inset="false" data-icon="false" data-divider-theme="b" id="lis" style="margin-top:10px">
+<!--  <li class="bottom-colour"><a href="index.php">
+               
+                <h2 class="">Kumar.R</h2>
+                <p class="paralimit">Hey Stephen, if you're available at 10am tomorrow, we've got a meeting with the jQuery team.</p>
+                <p class="ui-li-aside"><strong>
+                <a href="#" class="ui-btn ui-corner-all ui-icon-carat-r ui-btn-icon-notext">Carat-r Icon</a></strong></p>
+
+            </a></li> -->
+
+</ul>
+<!-- <ul data-role="listview" data-inset="false" data-icon="false" data-divider-theme="b" id="list_align" style="margin-top:10px">
+
+</ul> -->
+
+      </div>
+    </div>
+
+
+
+ </div>
+
+</div>
+<!--supervisor_list_view start end-->
+<!--not verified-->
+
+    <div data-role="page" id="supervisor_list_notveri">
+      
+ <script type="text/javascript" src="js/supervisor_list_not.js"></script>
+     <!--  <nd2-include data-src="examples/fragments/panel.left.html"></nd2-include> -->
+
+      <div data-role="panel" id="bottomsheet" data-animate="false" data-position='bottom' data-display="overlay">
+        <nd2-include data-src="examples/fragments/bottom.sheet.html"></nd2-include>
+      </div>
+
+<!--panekl-->
+<!--panel-->
+
+ <div data-role="panel" id="overlayPanelag" data-display="push" data-position="left" data-dismissible="false" data-swipe-close="false"> 
+
+  <div class='nd2-sidepanel-profile wow fadeInDown'>
+          <img class='profile-background' src="images/slide/slide-bg.png" />
+          <div class="row">
+            <div class='col-xs-12 center-xs'>
+              <div class='box box1'>
+                <img class="profile-thumbnail" src="images/slide/profile.png"  />
+             </div>
+            </div>
+             </div>
+              <div class="row" style="margin-top:5px">
+            <div class='col-xs-12 center-xs'>
+              <div class='box profile-text box1'>
+                   <strong id="supervisor_name_newlist"></strong>
+                <span class='subline' id="city_name_newlist"></span>
+              
+          </div>
+        </div>
+        </div>
+
+            </div>
+
+      <ul data-role="listview" data-inset="true">
+      
+      <li id="dashboardlistnew_q"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "><span class="ww">Dashboard</span></a></li>
+     <li id="verihg"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right " ><span class="ww">New Verification</span></a></li>
+      <li id="inprogresslistnew_q"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "><span class="ww">IN Progress</span></a></li>
+      <li id="verifiedlistnew_q"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "  ><span class="ww">Verified</span></a></li>
+     
+       <li><a href="#" id="listviewnew_signout_q" class="ui-btn sio a_mar">
+      <span class="ww si">Sign Out <img src="images/signout.png" alt="" class="img_sign"></span></a></li>
+  </ul>
+   
+</div> 
+
+
+      <div data-role="header" data-position="fixed" class="wow fadeInDown" data-wow-delay="0.2s">
+        <a href="#bottomsheet" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='1.2s'></a>
+        <a href="#overlayPanelag" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='0.8s' style="margin-top:-1px"><i class="zmdi zmdi-menu"></i></a>
+        <h1 class="wow fadeIn" data-wow-delay='0.4s' style="text-align:center;">Not Verified</h1>
+      </div>
+
+
+   <div role="main" class="ui-content" data-inset="false">
+
+   <a href="#" class="ui-btn ui-nodisc-icon ui-btn-icon-top full maintxt border">
+   <img src="images/viewuser-icon.png" alt="Smiley face">
+   <br>
+   <span class="uppercase"> Verification</span></a>
+
+   <div class="ui-grid-solo droparrow">
+      <div class="ui-block-a">
+        <a href="#" class="ui-link waves-effect waves-button waves-effect waves-button waves-effect waves-button"><img src="images/drop-arrow.png"></a><br>
+       
+      </div>
+    </div>
+
+ <div class="ui-grid-solo">
+ <div class="ui-block-a">
+
+<ul data-role="listview" data-inset="false" data-icon="false" data-divider-theme="b" id="lis_notveri" style="margin-top:10px">
+<!--  <li class="bottom-colour"><a href="index.php">
+               
+                <h2 class="">Kumar.R</h2>
+                <p class="paralimit">Hey Stephen, if you're available at 10am tomorrow, we've got a meeting with the jQuery team.</p>
+                <p class="ui-li-aside"><strong>
+                <a href="#" class="ui-btn ui-corner-all ui-icon-carat-r ui-btn-icon-notext">Carat-r Icon</a></strong></p>
+
+            </a></li> -->
+
+</ul>
+<!-- <ul data-role="listview" data-inset="false" data-icon="false" data-divider-theme="b" id="list_align" style="margin-top:10px">
+
+</ul> -->
+
+      </div>
+    </div>
+
+
+
+ </div>
+
+</div>
+<!--not verified end-->
+
+<!--super  designnewverification_inside-->
+<div data-role="page" id="pagedesign_new">
+ <script src="js/supervisor_view_inside.js"></script>
+
+    <script src="js/jquery.rondell.js"></script>
+
+ <link rel="stylesheet" href="slide/examples/screen.css" type="text/css" media="all" title="Screen">
+
+    <link rel="stylesheet" href="slide/dist/jquery.rondell.css" type="text/css" media="all" title="Screen">
+
+    <script src="slide/libs/modernizr-2.0.6.min.js"></script>
+<!--  <nd2-include data-src="examples/fragments/panel.left.html"></nd2-include> -->
+
+
+
+      <div data-role="panel" id="bottomsheet" data-animate="false" data-position='bottom' data-display="overlay">
+        <nd2-include data-src="examples/fragments/bottom.sheet.html"></nd2-include>
+      </div>
+
+<div data-role="panel" id="overlayPanelaster" data-display="push" data-position="left" data-dismissible="false" data-swipe-close="false"> 
+
+  <div class='nd2-sidepanel-profile wow fadeInDown'>
+          <img class='profile-background' src="images/slide/slide-bg.png" />
+          <div class="row">
+            <div class='col-xs-12 center-xs'>
+              <div class='box box1'>
+                <img class="profile-thumbnail" src="images/slide/profile.png"  />
+             </div>
+            </div>
+             </div>
+              <div class="row">
+            <div class='col-xs-12 center-xs'>
+              <div class='box profile-text box1'>
+                  <strong id='supervisor_name_newlistq'>Jane Doe</strong>
+                <span class='subline' id='city_name_newlistq'>Super Power User</span>
+              
+          </div>
+        </div>
+        </div>
+
+            </div>
+
+      <ul data-role="listview" data-inset="true">
+      
+      <li id="dashboard_inside"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "><span class="ww">Dashboard</span></a></li>
+      <li id="new_verification_inside"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "><span class="ww">New Verification</span></a></li>
+    
+      <li id="new_inside_inpro"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "><span class="ww">IN Progress</span></a></li>
+      <li id="new_inside_verified"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "  ><span class="ww">Verified</span></a></li>
+      <li id="before_new_list_inised"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right " ><span class="ww">Not verified</span></a></li>
+       <li><a href="#" id="listviewnew_signout" class="ui-btn sio a_mar">
+      <span class="ww si">Sign Out <img src="images/signout.png" alt="" class="img_sign"></span></a></li>
+  </ul>
+    <!--<a href="#" id="super_view_inside_signout" class="ui-btn sio ui-icon-power ui-btn-icon-right">
+      <span class="ww si">Sign Out</span></a>-->
+</div> 
+<!--panel end-->
+
+      <div data-role="header" data-position="fixed" class="wow fadeInDown" data-wow-delay="0.2s">
+        <a href="#" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='1.2s' id="before_new_list"><img src="images/arrow.png" alt="" class="img_sign"></a>
+        <a href="#overlayPanelaster" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='0.8s'>
+          <i class="zmdi zmdi-menu"></i></a>
+        <h1 class="wow fadeIn" data-wow-delay='0.4s' style="text-align:center;"></h1>
+         </div>
+
+<div data-role="main" class="ui-content">
+
+     <div class="column size1of2 " style="margin-left: -22px !important;">
+      <img src="slide/examples/images/sallery.jpg" alt="Rondell preview" class="hideOnJS">
+        <div id="rondellTop" class="showOnJS hidden">
+ 
+     <!--slider div-->
+
+    <div class="document_imag_inproone_newa rondell-item rondell-item-focused  " style="opacity: 1; width: 149px; height: 200px; left: 125.5px; top: 10px; z-index: 1003; display: block;">
+
+    <div class=" rondell-item-overlay" style="height: auto; overflow: auto; opacity: 1; display: block;"></div></div> 
+
+
+    <div class="document_imag_inproone_newb rondell-item rondell-item-focused  " style="opacity: 1; width: 149px; height: 200px; left: 125.5px; top: 10px; z-index: 1003; display: block;">
+   
+    <div class="rondell-item-overlay" style="height: auto; overflow: auto; opacity: 1; display: block;"></div></div>    
+
+    <div class="document_imag_inproone_newc rondell-item rondell-item-focused  " style="opacity: 1; width: 149px; height: 200px; left: 125.5px; top: 10px; z-index: 1003; display: block;">
+   
+    <div class="rondell-item-overlay" style="height: auto; overflow: auto; opacity: 1; display: block;"></div></div>  
+
+     <div class="document_imag_inproone_newd rondell-item rondell-item-focused  " style="opacity: 1; width: 149px; height: 200px; left: 125.5px; top: 10px; z-index: 1003; display: block;">
+   
+    <div class="rondell-item-overlay" style="height: auto; overflow: auto; opacity: 1; display: block;"></div></div>  
+
+    <div class="document_imag_inproone_newe rondell-item rondell-item-focused  " style="opacity: 1; width: 149px; height: 200px; left: 125.5px; top: 10px; z-index: 1003; display: block;">
+   
+     <div class="rondell-item-overlay" style="height: auto; overflow: auto; opacity: 1; display: block;"></div></div>  
+
+   <div class="document_imag_inproone_newf rondell-item rondell-item-focused  " style="opacity: 1; width: 149px; height: 200px; left: 125.5px; top: 10px; z-index: 1003; display: block;">
+   
+     <div class="rondell-item-overlay" style="height: auto; overflow: auto; opacity: 1; display: block;"></div></div>  
+
+     <!--slider div end-->
+
+
+<!--     <div class="document_imag_inproonet_newf rondell-item rondell-item-focused  " style="opacity: 1; width: 149px; height: 200px; left: 125.5px; top: 10px; z-index: 1003; display: block;">
+   
+     <div class="rondell-item-overlay" style="height: auto; overflow: auto; opacity: 1; display: block;"></div></div>  
+ -->
+
+      </div>
+      </div> 
+
+
+
+       <div class="ui-grid-c grid-bottom " id="sda_new">
+
+      </div>
+
+
+<div class="ui-grid-solo">
+    <div class="ui-block-a ">
+     <ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow" id="lii_new">
+
+    </ul>
+  </div>
+</div>
+
+<div class="ui-grid-solo">
+<div class="ui-block-a ">
+     <form action="" id="update_to_inprogress">
+
+<!--   <div id='select'></div>   -->
+  <select id="status_val">
+     <option value="New">Select Status</option>
+     <option value="Inprogress">Inprogress</option>
+  </select>  
+
+
+<br>
+
+ <label for="textarea2b">Remarks<span style="color: rgb(246, 16, 63);">*</span></label>
+<textarea cols="40" rows="8" name="textarea2" id="remark" placeholder="Remarks" class="ui-input-text ui-shadow-inset ui-body-inherit ui-corner-all ui-textinput-autogrow" style="height: 28px !important;"></textarea>
+
+<br>
+<a href="#" class="ui-btn ui-corner-all ui-shadow submit-button grid_mar" id="inprogress">Submit</a>
+</form>
+</div>
+</div>
+  <script type="text/javascript">
+(function() {
+  $("#rondellTop").rondell({
+    preset: "",
+    radius: {
+      x: 130
+    },
+    center: {
+      left: 200,
+      top: 110
+    },
+    itemProperties: {
+      size: {
+        width: 100,
+        height: 100
+      }
+    }
+  });
+
+}).call(this);
+</script>
+
+</div>
+
+</div>
+
+<!--super  designnewverification_inside end-->
+
+<!--super design verified-->
+<div data-role="page" id="pagedesign_veri">
+<script src="js/supervisor_verified_view_inside.js"></script>
+
+    <script src="js/jquery.rondell.js"></script>
+
+ <link rel="stylesheet" href="slide/examples/screen.css" type="text/css" media="all" title="Screen">
+
+    <link rel="stylesheet" href="slide/dist/jquery.rondell.css" type="text/css" media="all" title="Screen">
+
+    <script src="slide/libs/modernizr-2.0.6.min.js"></script>
+<!--  <nd2-include data-src="examples/fragments/panel.left.html"></nd2-include> -->
+
+
+
+      <div data-role="panel" id="bottomsheet" data-animate="false" data-position='bottom' data-display="overlay">
+        <nd2-include data-src="examples/fragments/bottom.sheet.html"></nd2-include>
+      </div>
+
+
+
+ <div data-role="panel" id="overlayPanelcysu" data-display="push" data-position="left" data-dismissible="false" data-swipe-close="false"> 
+
+  <div class='nd2-sidepanel-profile wow fadeInDown'>
+          <img class='profile-background' src="images/slide/slide-bg.png" />
+          <div class="row">
+            <div class='col-xs-12 center-xs'>
+              <div class='box box1'>
+                <img class="profile-thumbnail" src="images/slide/profile.png"  />
+             </div>
+            </div>
+             </div>
+              <div class="row">
+            <div class='col-xs-12 center-xs'>
+              <div class='box profile-text box1'>
+                  <strong id="supervisor_name_verilista">Jane Doe</strong>
+                <span class='subline' id="city_name_verilista">Super Power User</span>
+              
+          </div>
+        </div>
+        </div>
+
+            </div>
+
+      <ul data-role="listview" data-inset="true">
+      
+      <li id="dashboardlis_veri"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "><span class="ww">Dashboard</span></a></li>
+       <li id="new_verilistfromverifieda_oo"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "  ><span class="ww">New Verification</span></a></li>
+      <li id="inproveria_oi"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "  ><span class="ww">In Progress</span></a></li>
+      <li id="verils_veiring"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "  ><span class="ww">Verified</span></a></li>
+      <li id="verified_inpro_inside_upo_n"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right " ><span class="ww">Not verified</span></a></li>
+       <li><a href="#" id="siha_p" class="ui-btn sio a_mar">
+      <span class="ww si">Sign Out <img src="images/signout.png" alt="" class="img_sign"></span></a></li>
+  </ul>
+    <!--<a href="#" id="siha" class="ui-btn sio ui-icon-power ui-btn-icon-right">
+      <span class="ww si">Sign Out</span></a>-->
+</div> 
+<!--panel end-->
+
+      <div data-role="header" data-position="fixed" class="wow fadeInDown" data-wow-delay="0.2s">
+        <a href="#" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='1.2s' id="before_verified_in"><img src="images/arrow.png" alt="" class="img_sign"></a>
+        <a href="#overlayPanelcysu" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='0.8s'>
+          <i class="zmdi zmdi-menu"></i></a>
+        <h1 class="wow fadeIn" data-wow-delay='0.4s' style="text-align:center;"></h1>
+         </div>
+
+<div data-role="main" class="ui-content">
+
+     <div class="column size1of2 " style="margin-left: -22px !important;">
+      <img src="slide/examples/images/sallery.jpg" alt="Rondell preview" class="hideOnJS">
+        <div id="rondellTopverifi" class="showOnJS hidden">
+ 
+ <!--slider div-->
+
+    <div class="document_imag_inproone_veria rondell-item rondell-item-focused  " style="opacity: 1; width: 149px; height: 200px; left: 125.5px; top: 10px; z-index: 1003; display: block;">
+
+    <div class=" rondell-item-overlay" style="height: auto; overflow: auto; opacity: 1; display: block;"></div></div> 
+
+
+    <div class="document_imag_inproone_verib rondell-item rondell-item-focused  " style="opacity: 1; width: 149px; height: 200px; left: 125.5px; top: 10px; z-index: 1003; display: block;">
+   
+    <div class="rondell-item-overlay" style="height: auto; overflow: auto; opacity: 1; display: block;"></div></div>    
+
+    <div class="document_imag_inproone_veric rondell-item rondell-item-focused  " style="opacity: 1; width: 149px; height: 200px; left: 125.5px; top: 10px; z-index: 1003; display: block;">
+   
+    <div class="rondell-item-overlay" style="height: auto; overflow: auto; opacity: 1; display: block;"></div></div>  
+
+     <div class="document_imag_inproone_verid rondell-item rondell-item-focused  " style="opacity: 1; width: 149px; height: 200px; left: 125.5px; top: 10px; z-index: 1003; display: block;">
+   
+    <div class="rondell-item-overlay" style="height: auto; overflow: auto; opacity: 1; display: block;"></div></div>  
+
+    <div class="document_imag_inproone_verie rondell-item rondell-item-focused  " style="opacity: 1; width: 149px; height: 200px; left: 125.5px; top: 10px; z-index: 1003; display: block;">
+   
+     <div class="rondell-item-overlay" style="height: auto; overflow: auto; opacity: 1; display: block;"></div></div>  
+
+   <div class="document_imag_inproone_verif rondell-item rondell-item-focused  " style="opacity: 1; width: 149px; height: 200px; left: 125.5px; top: 10px; z-index: 1003; display: block;">
+   
+     <div class="rondell-item-overlay" style="height: auto; overflow: auto; opacity: 1; display: block;"></div></div>  
+
+     <!--slider div end-->
+
+
+
+      </div>
+      </div> 
+
+       <div class="ui-grid-c grid-bottom " id="sda_veri">
+
+      </div>
+
+
+<div class="ui-grid-solo">
+    <div class="ui-block-a ">
+     <ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow" id="lii_veri">
+
+    </ul>
+  </div>
+</div>
+
+  <script type="text/javascript">
+(function() {
+  $("#rondellTopverifi").rondell({
+    preset: "",
+    radius: {
+      x: 130
+    },
+    center: {
+      left: 200,
+      top: 110
+    },
+    itemProperties: {
+      size: {
+        width: 100,
+        height: 100
+      }
+    }
+  });
+
+}).call(this);
+</script>
+
+</div>
+
+</div>
+
+<!--super design verified end-->
+
+<!--super  not_veri_inside start-->
+<div data-role="page" id="pagedesign_not_veri">
+ <script src="js/super_not_veri_inisde.js"></script>
+
+    <script src="js/jquery.rondell.js"></script>
+
+ <link rel="stylesheet" href="slide/examples/screen.css" type="text/css" media="all" title="Screen">
+
+    <link rel="stylesheet" href="slide/dist/jquery.rondell.css" type="text/css" media="all" title="Screen">
+
+    <script src="slide/libs/modernizr-2.0.6.min.js"></script>
+<!--  <nd2-include data-src="examples/fragments/panel.left.html"></nd2-include> -->
+
+
+
+      <div data-role="panel" id="bottomsheet" data-animate="false" data-position='bottom' data-display="overlay">
+        <nd2-include data-src="examples/fragments/bottom.sheet.html"></nd2-include>
+      </div>
+
+<div data-role="panel" id="overlayPanelast" data-display="push" data-position="left" data-dismissible="false" data-swipe-close="false"> 
+
+  <div class='nd2-sidepanel-profile wow fadeInDown'>
+          <img class='profile-background' src="images/slide/slide-bg.png" />
+          <div class="row">
+            <div class='col-xs-12 center-xs'>
+              <div class='box box1'>
+                <img class="profile-thumbnail" src="images/slide/profile.png"  />
+             </div>
+            </div>
+             </div>
+              <div class="row">
+            <div class='col-xs-12 center-xs'>
+              <div class='box profile-text box1'>
+                  <strong id='supervisor_name_newlistq'></strong>
+                <span class='subline' id='city_name_newlistq'></span>
+              
+          </div>
+        </div>
+        </div>
+
+            </div>
+
+      <ul data-role="listview" data-inset="true">
+      
+      <li id="dashboard_inside"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "><span class="ww">Dashboard</span></a></li>
+      <li id="new_verification_inside_not"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "><span class="ww">New Verification</span></a></li>
+    
+      <li id="new_inside_inpro_not"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "><span class="ww">IN Progress</span></a></li>
+      <li id="new_inside_not_verified"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "  ><span class="ww">Not Verified</span></a></li>
+      <li id="lpa_update_one"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right " ><span class="ww">Not verified</span></a></li>
+       <li><a href="#" id="super_view_inside_signout_not" class="ui-btn sio a_mar">
+      <span class="ww si">Sign Out <img src="images/signout.png" alt="" class="img_sign"></span></a></li>
+  </ul>
+    <!--<a href="#" id="super_view_inside_signout" class="ui-btn sio ui-icon-power ui-btn-icon-right">
+      <span class="ww si">Sign Out</span></a>-->
+</div> 
+<!--panel end-->
+
+      <div data-role="header" data-position="fixed" class="wow fadeInDown" data-wow-delay="0.2s">
+        <a href="#" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='1.2s' id="before_new_not_Veri_list"><img src="images/arrow.png" alt="" class="img_sign"></a>
+        <a href="#overlayPanelast" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='0.8s'>
+          <i class="zmdi zmdi-menu"></i></a>
+        <h1 class="wow fadeIn" data-wow-delay='0.4s' style="text-align:center;"></h1>
+         </div>
+
+<div data-role="main" class="ui-content">
+
+     <div class="column size1of2 " style="margin-left: -22px !important;">
+      <img src="slide/examples/images/sallery.jpg" alt="Rondell preview" class="hideOnJS">
+        <div id="rondellTopnott" class="showOnJS hidden">
+ 
+     
+
+    <div class="document_imag_inproone_notveria  rondell-item rondell-item-focused  " style="opacity: 1; width: 149px; height: 200px; left: 125.5px; top: 10px; z-index: 1003; display: block;">
+
+    <div class=" rondell-item-overlay" style="height: auto; overflow: auto; opacity: 1; display: block;"></div></div> 
+
+
+    <div class="document_imag_inproone_notverib rondell-item rondell-item-focused  " style="opacity: 1; width: 149px; height: 200px; left: 125.5px; top: 10px; z-index: 1003; display: block;">
+   
+    <div class="rondell-item-overlay" style="height: auto; overflow: auto; opacity: 1; display: block;"></div></div>    
+
+    <div class="document_imag_inproone_notveric rondell-item rondell-item-focused  " style="opacity: 1; width: 149px; height: 200px; left: 125.5px; top: 10px; z-index: 1003; display: block;">
+   
+    <div class="rondell-item-overlay" style="height: auto; overflow: auto; opacity: 1; display: block;"></div></div>  
+
+     <div class="document_imag_inproone_notverid rondell-item rondell-item-focused  " style="opacity: 1; width: 149px; height: 200px; left: 125.5px; top: 10px; z-index: 1003; display: block;">
+   
+    <div class="rondell-item-overlay" style="height: auto; overflow: auto; opacity: 1; display: block;"></div></div>  
+
+    <div class="document_imag_inproone_notverif rondell-item rondell-item-focused  " style="opacity: 1; width: 149px; height: 200px; left: 125.5px; top: 10px; z-index: 1003; display: block;">
+   
+     <div class="rondell-item-overlay" style="height: auto; overflow: auto; opacity: 1; display: block;"></div></div>  
+
+
+
+
+
+      </div>
+      </div> 
+
+       <div class="ui-grid-c grid-bottom " id="sda_not_veri">
+
+      </div>
+
+
+<div class="ui-grid-solo">
+    <div class="ui-block-a ">
+     <ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow" id="lii_not_veri">
+
+    </ul>
+  </div>
+</div>
+
+<div class="ui-grid-solo" style="margin-top:2%;">
+    <div class="ui-block-a ">
+   
+                  <label for="name2b">Remarks</label>
+                       <textarea cols="10" rows="4" name="textarea2" id="notverifiedremarks" placeholder="Remarks" class="ui-input-text ui-shadow-inset ui-body-inherit ui-corner-all ui-textinput-autogrow ui-state-disabled" disabled="disabled" style="height: 38px;    border: 1px solid #cccccc;"></textarea>
+        
+    </div>
+</div>
+
+  <script type="text/javascript">
+(function() {
+  $("#rondellTopnott").rondell({
+    preset: "",
+    radius: {
+      x: 130
+    },
+    center: {
+      left: 200,
+      top: 110
+    },
+    itemProperties: {
+      size: {
+        width: 100,
+        height: 100
+      }
+    }
+  });
+
+}).call(this);
+</script>
+
+</div>
+
+</div>
+
+<!--super  not_veri_inside end-->
+
+
+
+ <!--supervisor_inprogress_list start -->
+ <div data-role="page" id="supervisor_inprogress_list">
+     <script type="text/javascript" src="js/supervisor_inprogress_list.js"></script>
+
+
+     <!--  <nd2-include data-src="examples/fragments/panel.left.html"></nd2-include> -->
+
+      <div data-role="panel" id="bottomsheet" data-animate="false" data-position='bottom' data-display="overlay">
+        <nd2-include data-src="examples/fragments/bottom.sheet.html"></nd2-include>
+      </div>
+
+
+ <div data-role="panel" id="overlayPanelbinprolist" data-display="push" data-position="left" data-dismissible="false" data-swipe-close="false"> 
+
+  <div class='nd2-sidepanel-profile wow fadeInDown'>
+          <img class='profile-background' src="images/slide/slide-bg.png" />
+          <div class="row">
+            <div class='col-xs-12 center-xs'>
+              <div class='box box1'>
+                <img class="profile-thumbnail" src="images/slide/profile.png"  />
+             </div>
+            </div>
+             </div>
+              <div class="row" style="margin-top:5px">
+            <div class='col-xs-12 center-xs'>
+              <div class='box profile-text box1'>
+                  <strong id="supervisor_name_inprolist">Jane Doe</strong>
+                <span class='subline' id="city_name_inprolist">Super Power User</span>
+              
+          </div>
+        </div>
+        </div>
+
+            </div>
+
+      <ul data-role="listview" data-inset="true">
+      
+      <li id="dashboardlistinpro"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "><span class="ww">Dashboard</span></a></li>
+      <li id="newveriinpro"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "  ><span class="ww">New Verification</span></a></li>
+      <li id="verifiedlistnewpro"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "  ><span class="ww">Verified</span></a></li>
+      <li id="before_new_list_inised_inpro"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right " ><span class="ww">Not verified</span></a></li>
+       <li><a href="#" id="listviewinprooo_signout" class="ui-btn sio a_mar">
+      <span class="ww si">Sign Out <img src="images/signout.png" alt="" class="img_sign"></span></a></li>
+  </ul>
+    <!--<a href="#" id="inprosign" class="ui-btn sio ui-icon-power ui-btn-icon-right">
+      <span class="ww si">Sign Out</span></a>-->
+</div> 
+
+<!--panel end-->
+      <div data-role="header" data-position="fixed" class="wow fadeInDown" data-wow-delay="0.2s">
+  <!--       <a href="#bottomsheet" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='1.2s'><i class="zmdi zmdi-more-vert"></i></a> -->
+        <a href="#overlayPanelbinprolist" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='0.8s'><i class="zmdi zmdi-menu"></i></a>
+        <h1 class="wow fadeIn" data-wow-delay='0.4s' style="text-align:center;">IN PROGRESS</h1>
+      </div>
+
+
+   <div role="main" class="ui-content" data-inset="false">
+
+   <a href="#" class="ui-btn ui-nodisc-icon ui-btn-icon-top full maintxt border">
+   <img src="images/viewuser-icon.png" alt="Smiley face">
+   <br>
+   <span class="uppercase"> Verification</span></a>
+
+   <div class="ui-grid-solo droparrow">
+      <div class="ui-block-a">
+        <a href="#" class="ui-link waves-effect waves-button waves-effect waves-button waves-effect waves-button"><img src="images/drop-arrow.png"></a><br>
+       
+      </div>
+    </div>
+
+ <div class="ui-grid-solo">
+<div class="ui-block-a">
+
+<ul data-role="listview" data-inset="false" data-icon="false" data-divider-theme="b" id="lis_align_inpro" style="margin-top:10px">
+
+</ul>
+
+      </div>
+    </div>
+
+ </div>
+
+  </div>
+
+ <!--supervisor_inprogress_list start end-->
+
+ <!--supervisor_view_inside start -->
+<div data-role="page" id="supervisor_view_inside">
+<!-- <script src="js/supervisor_view_inside.js"></script> -->
+	<!-- <nd2-include data-src="examples/fragments/panel.left.html"></nd2-include> -->
+
+	<div data-role="panel" id="bottomsheet" data-animate="false" data-position='bottom' data-display="overlay">
+	<nd2-include data-src="examples/fragments/bottom.sheet.html"></nd2-include>
+	</div>
+
+<div data-role="panel" id="overlayPanelas" data-display="push" data-position="left" data-dismissible="false" data-swipe-close="false"> 
+
+  <div class='nd2-sidepanel-profile wow fadeInDown'>
+          <img class='profile-background' src="images/slide/slide-bg.png" />
+          <div class="row">
+            <div class='col-xs-12 center-xs'>
+              <div class='box box1'>
+                <img class="profile-thumbnail" src="images/slide/profile.png"  />
+             </div>
+            </div>
+             </div>
+              <div class="row">
+            <div class='col-xs-12 center-xs'>
+              <div class='box profile-text box1'>
+                  <strong id='supervisor_name_newlistq'>Jane Doe</strong>
+                <span class='subline' id='city_name_newlistq'>Super Power User</span>
+              
+          </div>
+        </div>
+        </div>
+
+            </div>
+
+      <ul data-role="listview" data-inset="true">
+      
+      <li id="dashboard_inside"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "><span class="ww">Dashboard</span></a></li>
+      <li id="new_verification_inside"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "><span class="ww">New Verification</span></a></li>
+    
+      <li id="new_inside_inpro"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "><span class="ww">IN Progress</span></a></li>
+      <li id="new_inside_verified"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "  ><span class="ww">Verified</span></a></li>
+      <li id="lpa_update_one"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right " ><span class="ww">Not verified</span></a></li>
+       <li><a href="#" id="listviewnew_signout" class="ui-btn sio a_mar">
+      <span class="ww si">Sign Out <img src="images/signout.png" alt="" class="img_sign"></span></a></li>
+  </ul>
+    <!--<a href="#" id="super_view_inside_signout" class="ui-btn sio ui-icon-power ui-btn-icon-right">
+      <span class="ww si">Sign Out</span></a>-->
+</div> 
+	
+
+	
+	<div data-role="header" data-position="fixed" class="wow fadeInDown" data-wow-delay="0.2s">
+	<a href="#" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='1.2s' id="before_new_list"><img src="images/arrow.png" alt="" class="img_sign"></a>
+         <a href="#overlayPanelas" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='0.8s'><i class="zmdi zmdi-menu"></i></a>
+	<!--  <a href="#mypanel" data-role='button' data-inline='true'><i class='lIcon fa fa-bars'></i>Open panel</a> -->
+	<h1 class="wow fadeIn" data-wow-delay='0.4s' style="text-align:center;">Profile</h1>
+	</div>
+
+
+
+   <div role="main" class="ui-content" data-inset="false" >
+
+   <a href="#" class="ui-btn ui-nodisc-icon ui-btn-icon-top full maintxt border">
+   <img src="images/createuser-icon.png" alt="Smiley face">
+   <br>
+   <span class="uppercase">Profile</span></a>
+
+   <div class="ui-grid-solo droparrow">
+      <div class="ui-block-a">
+        <a href="#" class="ui-link"><img src="images/drop-arrow.png"></a><br>
+       
+      </div>
+    </div>
+
+
+<!-- 	<div class="col-xs-12 col-sm-6 col-md-4" style="margin-top: 20px;">
+
+ -->
+	<div class="ui-grid-solo">
+    <div class="ui-block-a">
+
+   <div style="text-align:center; margin-top:5px;" class="document_imag"><!-- <img src="images/use.png"> --></div>
+   <div style="text-align:center; font-size:14px;font-weight: 600;" id="name">Pierre Borodin</div>
+   <div style="text-align:center; font-size:25px;font-weight: 400; margin-top:3px;color: #F83939;"><span id="percent"></span></div>
+
+<div style="margin-top:13px; color: #E8E8E8; border: solid 1px; width:100%"> </div>
+<div style="background-color: #58BF71; color: white; text-align: center; padding: 3px;" id="qualification_name">UG</div>
+
+
+<div style="text-align:center; font-size:15px;font-weight: 400; margin-top:13px;">About Me</div>
+</div>
+</div>
+
+
+<div class="ui-grid-solo">
+    <div class="ui-block-a ">
+     <ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
+      <li class="ui-li-has-icon ui-first- ui-first-child">
+      <a href="#" class="ui-btn ui-btn-icon- ui-icon- pad" style="background-color: #F0F0F0; border-color: #FFF;">
+      <img src="images/mobile/location.png" alt="USA" class="ui-li-icon profile t">
+      <span style="font-size: 15px; font-weight: 400;margin-left: 30px;" id="institute"></span></a>
+      </li>
+
+   <!--    <li class="ui-li-has-icon ui-first-">
+      <a href="#" class="ui-btn ui-btn-icon- ui-icon- pad" style="background-color: #F0F0F0; border-color: #FFF;">
+      <img src="images/msg.png" alt="USA" class="ui-li-icon profile t"><span style="font-size: 15px; font-weight: 400;">Carterblane@gmail.com</span></a>
+     </li> -->
+
+      <li class="ui-li-has-icon ui-first-">
+      <a href="#" class="ui-btn ui-btn-icon- ui-icon- pad" style="background-color: #F0F0F0; border-color: #FFF;">
+      <img src="images/mobile/institute.png" alt="USA" class="ui-li-icon profile t"><span style="font-size: 15px; font-weight: 400;margin-left: 30px;" id="pincode"></span></a>
+      </li>
+
+      <li class="ui-li-has-icon ui-first- ui-last-child">
+      <a href="#" class="ui-btn ui-btn-icon- ui-icon- pad" style="background-color: #F0F0F0; border-color: #FFF;">
+      <img src="images/mobile/world.png" alt="USA" class="ui-li-icon profile t"><span style="font-size: 15px; font-weight: 400;margin-left: 30px;" id="location"></span></a>
+      </li>
+
+      <li class="ui-li-has-icon ui-first- ui-last-child">
+      <a href="#" class="ui-btn ui-btn-icon- ui-icon- pad" style="background-color: #F0F0F0; border-color: #FFF;">
+      <img src="images/mobile/state.png" alt="USA" class="ui-li-icon profile t"><span style="font-size: 15px; font-weight: 400;margin-left: 30px;">Tamil Nadu</span></a>
+      </li>
+     
+      
+    
+     
+    </ul>
+  </div>
+</div>
+
+
+
+
+<div class="ui-grid-solo">
+<div class="ui-block-a ">
+     <form action="" id="update_to_inprogress">
+
+<!--   <div id='select'></div>   -->
+  <select id="status_val">
+     <option value="New">Select Status</option>
+     <option value="Inprogress">Inprogress</option>
+  </select>  
+
+<br>
+
+ <label for="textarea2b">Remarks<span style="color: rgb(246, 16, 63);">*</span></label>
+<textarea cols="40" rows="8" name="textarea2" id="remark" placeholder="Remarks" class="ui-input-text ui-shadow-inset ui-body-inherit ui-corner-all ui-textinput-autogrow" style="height: 28px !important;"></textarea>
+
+<br>
+<a href="#" class="ui-btn ui-corner-all ui-shadow submit-button grid_mar" id="inprogress">Submit</a>
+</form>
+</div>
+</div>
+</div>
+<br>
+<div data-role="footer" data-position="fixed">
+<a href="#" class="ui-btn ui-corner-all ui-shadow Cancel-button" style="width: 100%; text-align: center;">
+  <img src="images/mobile/download.png"></a><br>
+</div>
+</div>
+ <!--supervisor_view_inside start end -->
+
+<!--verified list start-->
+<div data-role="page" id="supervisor_verified_list">
+    <script type="text/javascript" src="js/supervisor_verified_list.js"></script>
+
+
+      <div data-role="panel" id="bottomsheet" data-animate="false" data-position='bottom' data-display="overlay">
+        <nd2-include data-src="examples/fragments/bottom.sheet.html"></nd2-include>
+      </div>
+
+
+      <!--panel-->
+
+ <div data-role="panel" id="overlayPanelcy" data-display="push" data-position="left" data-dismissible="false" data-swipe-close="false"> 
+
+  <div class='nd2-sidepanel-profile wow fadeInDown'>
+          <img class='profile-background' src="images/slide/slide-bg.png" />
+          <div class="row">
+            <div class='col-xs-12 center-xs'>
+              <div class='box box1'>
+                <img class="profile-thumbnail" src="images/slide/profile.png"  />
+             </div>
+            </div>
+             </div>
+              <div class="row" style="margin-top:5px">
+            <div class='col-xs-12 center-xs'>
+              <div class='box profile-text box1'>
+                  <strong id="supervisor_name_verilist">Jane Doe</strong>
+                <span class='subline' id="city_name_verilist">Super Power User</span>
+              
+          </div>
+        </div>
+        </div>
+
+            </div>
+
+      <ul data-role="listview" data-inset="true">
+      
+      <li id="dashboardlistinproveri_veri"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "><span class="ww">Dashboard</span></a></li>
+       <li id="new_verilistfromverified_veri"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "  ><span class="ww">New Verification</span></a></li>
+      <li id="inproveri_veri"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "  ><span class="ww">In Progress</span></a></li>
+      <li id="verified_inpro_inside_up_veri"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right " ><span class="ww">Not verified</span></a></li>
+       <li><a href="#" id="sih_sio" class="ui-btn sio a_mar">
+      <span class="ww si">Sign Out <img src="images/signout.png" alt="" class="img_sign"></span></a></li>
+  </ul>
+    <!--<a href="#" id="sih" class="ui-btn sio ui-icon-power ui-btn-icon-right">
+      <span class="ww si">Sign Out</span></a>-->
+</div> 
+
+<!--panel end-->
+      <div data-role="header" data-position="fixed" class="wow fadeInDown" data-wow-delay="0.2s">
+      <!--   <a href="#bottomsheet" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='1.2s'><i class="zmdi zmdi-more-vert"></i></a>
+         --><a href="#overlayPanelcy" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='0.8s'><i class="zmdi zmdi-menu"></i></a>
+        <h1 class="wow fadeIn" data-wow-delay='0.4s' style="text-align:center;">Verified</h1>
+      </div>
+
+
+   <div role="main" class="ui-content" data-inset="false">
+
+   <a href="#" class="ui-btn ui-nodisc-icon ui-btn-icon-top full maintxt border">
+   <img src="images/viewuser-icon.png" alt="Smiley face">
+   <br>
+   <span class="uppercase"> Verification</span></a>
+
+   <div class="ui-grid-solo droparrow">
+      <div class="ui-block-a">
+        <a href="#" class="ui-link waves-effect waves-button waves-effect waves-button waves-effect waves-button"><img src="images/drop-arrow.png"></a><br>
+       
+      </div>
+    </div>
+
+ <div class="ui-grid-solo">
+<div class="ui-block-a">
+<ul data-role="listview" data-icon="false"  >
+        <li data-role="list-divider"></li>
+
+
+
+
+<ul data-role="listview" data-inset="false" data-icon="false" data-divider-theme="b" id="list_align_verified" style="margin-top:10px;margin-left:10px;">
+
+</ul>
+
+      </div>
+    </div>
+
+ </div>
+
+  </div>
+
+
+<!--verified list end-->
+<!---verified inside-->
+<div data-role="page" id="supervisor_verified_view_inside">
+<!-- <script src="js/supervisor_verified_view_inside.js"></script> -->
+      <!-- <nd2-include data-src="examples/fragments/panel.left.html"></nd2-include> -->
+
+      <div data-role="panel" id="bottomsheet" data-animate="false" data-position='bottom' data-display="overlay">
+        <nd2-include data-src="examples/fragments/bottom.sheet.html"></nd2-include>
+      </div>
+
+
+ <div data-role="panel" id="overlayPanelcys" data-display="push" data-position="left" data-dismissible="false" data-swipe-close="false"> 
+
+  <div class='nd2-sidepanel-profile wow fadeInDown'>
+          <img class='profile-background' src="images/slide/slide-bg.png" />
+          <div class="row">
+            <div class='col-xs-12 center-xs'>
+              <div class='box box1'>
+                <img class="profile-thumbnail" src="images/slide/profile.png"  />
+             </div>
+            </div>
+             </div>
+              <div class="row">
+            <div class='col-xs-12 center-xs'>
+              <div class='box profile-text box1'>
+                  <strong id="supervisor_name_verilista">Jane Doe</strong>
+                <span class='subline' id="city_name_verilista">Super Power User</span>
+              
+          </div>
+        </div>
+        </div>
+
+            </div>
+
+      <ul data-role="listview" data-inset="true">
+      
+      <li id="dashboardlistinproveria"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "><span class="ww">Dashboard</span></a></li>
+       <li id="new_verilistfromverifieda"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "  ><span class="ww">New Verification</span></a></li>
+      <li id="inproveria"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "  ><span class="ww">In Progress</span></a></li>
+      <li id="verils"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "  ><span class="ww">Verified</span></a></li>
+      <li id="lpa_update_one"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right " ><span class="ww">Not verified</span></a></li>
+       <li><a href="#" id="listviewnew_signout" class="ui-btn sio a_mar">
+      <span class="ww si">Sign Out <img src="images/signout.png" alt="" class="img_sign"></span></a></li>
+  </ul>
+    <!--<a href="#" id="siha" class="ui-btn sio ui-icon-power ui-btn-icon-right">
+      <span class="ww si">Sign Out</span></a>-->
+</div> 
+
+  
+
+      <!--panel ends-->
+      <div data-role="header" data-position="fixed" class="wow fadeInDown" data-wow-delay="0.2s">
+      <a href="#" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='1.2s' id="before_verified"><img src="images/arrow.png" alt="" class="img_sign"></a>
+       <a href="#overlayPanelcys" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='0.8s'><i class="zmdi zmdi-menu"></i></a>
+      <!--  <a href="#mypanel" data-role='button' data-inline='true'><i class='lIcon fa fa-bars'></i>Open panel</a> -->
+        <h1 class="wow fadeIn" data-wow-delay='0.4s' style="text-align:center;">Profile</h1>
+      </div>
+
+
+
+   <div role="main" class="ui-content" data-inset="false">
+
+   <a href="#" class="ui-btn ui-nodisc-icon ui-btn-icon-top full maintxt border">
+   <img src="images/createuser-icon.png" alt="Smiley face">
+   <br>
+   <span class="uppercase">Profile</span></a>
+
+   <div class="ui-grid-solo droparrow">
+      <div class="ui-block-a">
+        <a href="#" class="ui-link"><img src="images/drop-arrow.png"></a><br>
+       
+      </div>
+    </div>
+
+
+  <div class="col-xs-12 col-sm-6 col-md-4" style="margin-top: 20px;">
+
+
+  <div class="ui-grid-solo">
+    <div class="ui-block-a">
+
+   <div style="text-align:center; margin-top:5px;" class="document_imag_veri"><!-- <img src="images/use.png"> --></div>
+   <div style="text-align:center; font-size:14px;font-weight: 600;" id="name_veri">Pierre Borodin</div>
+   <div style="text-align:center; font-size:25px;font-weight: 400; margin-top:3px;color: #F83939;"><span id="percent_veri"></span></div>
+
+<div style="margin-top:13px; color: #E8E8E8; border: solid 1px; width:100%"> </div>
+<div style="background-color: #58BF71; color: white; text-align: center; padding: 3px;" id="qualification_name_veri">UG</div>
+
+
+<div style="text-align:center; font-size:15px;font-weight: 400; margin-top:13px;">About Me</div>
+</div>
+
+
+
+<div class="ui-grid-solo">
+    <div class="ui-block-a ">
+     <ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
+      <li class="ui-li-has-icon ui-first- ui-first-child">
+      <a href="#" class="ui-btn ui-btn-icon- ui-icon- pad" style="background-color: #F0F0F0; border-color: #FFF;">
+      <img src="images/mobile/location.png" alt="USA" class="ui-li-icon profile t">
+      <span style="font-size: 15px; font-weight: 400;margin-left: 30px;" id="institute_veri"></span></a>
+      </li>
+
+   <!--    <li class="ui-li-has-icon ui-first-">
+      <a href="#" class="ui-btn ui-btn-icon- ui-icon- pad" style="background-color: #F0F0F0; border-color: #FFF;">
+      <img src="images/msg.png" alt="USA" class="ui-li-icon profile t"><span style="font-size: 15px; font-weight: 400;">Carterblane@gmail.com</span></a>
+     </li> -->
+
+      <li class="ui-li-has-icon ui-first-">
+      <a href="#" class="ui-btn ui-btn-icon- ui-icon- pad" style="background-color: #F0F0F0; border-color: #FFF;">
+      <img src="images/mobile/institute.png" alt="USA" class="ui-li-icon profile t"><span style="font-size: 15px; font-weight: 400;margin-left: 30px;" id="pincode_veri"></span></a>
+      </li>
+
+      <li class="ui-li-has-icon ui-first- ui-last-child">
+      <a href="#" class="ui-btn ui-btn-icon- ui-icon- pad" style="background-color: #F0F0F0; border-color: #FFF;">
+      <img src="images/mobile/world.png" alt="USA" class="ui-li-icon profile t"><span style="font-size: 15px; font-weight: 400;margin-left: 30px;" id="location_veri"></span></a>
+      </li>
+
+      <li class="ui-li-has-icon ui-first- ui-last-child">
+      <a href="#" class="ui-btn ui-btn-icon- ui-icon- pad" style="background-color: #F0F0F0; border-color: #FFF;">
+      <img src="images/mobile/state.png" alt="USA" class="ui-li-icon profile t"><span style="font-size: 15px; font-weight: 400;margin-left: 30px;">Tamil Nadu</span></a>
+      </li>
+     
+      
+    
+     
+    </ul>
+  </div>
+</div>
+
+<div class="ui-grid-solo">
+<div class="ui-block-a ">
+
+</div>
+</div>
+
+
+  
+</div>          
+</div>
+</div>
+<div data-role="footer" data-position="fixed">
+<a href="#pageone" class="ui-btn ui-corner-all ui-shadow Cancel-button" style="width: 100%; text-align: center;">
+  <img src="images/mobile/download.png"></a><br>
+</div>
+</div>
+<!---verified end-->
+<!--inprogrees starts-->
+<div data-role="page" id="sue">
+<!-- <script src="js/supervisor_inprogress_inside.js"></script> -->
+      <!-- <nd2-include data-src="examples/fragments/panel.left.html"></nd2-include> -->
+
+      <div data-role="panel" id="bottomsheet" data-animate="false" data-position='bottom' data-display="overlay">
+        <nd2-include data-src="examples/fragments/bottom.sheet.html"></nd2-include>
+      </div>
+
+      <!--panel-->
+
+ <div data-role="panel" id="overlayPanelh" data-display="push" data-position="left" data-dismissible="false" data-swipe-close="false"> 
+
+  <div class='nd2-sidepanel-profile wow fadeInDown'>
+          <img class='profile-background' src="images/slide/slide-bg.png" />
+          <div class="row">
+            <div class='col-xs-12 center-xs'>
+              <div class='box box1'>
+                <img class="profile-thumbnail" src="images/slide/profile.png"  />
+             </div>
+            </div>
+             </div>
+              <div class="row" style="margin-top:5px">
+            <div class='col-xs-12 center-xs'>
+              <div class='box profile-text box1'>
+                  <strong id="supervisor_name_inprolistinside">Jane Doe</strong>
+                <span class='subline' id="city_name_inprolistinside">Super Power User</span>
+              
+          </div>
+        </div>
+        </div>
+
+            </div>
+
+      <ul data-role="listview" data-inset="true">
+      
+      <li id="dashboard_inpro_inside"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "><span class="ww">Dashboard</span></a></li>
+     <li id="inproveri_inside_neww"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "  ><span class="ww">New Verification</span></a></li>
+      <li id="inproveri_inside"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "  ><span class="ww">In Progress</span></a></li>
+      <li id="verified_inpro_inside"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right " ><span class="ww"> Verified</span></a></li>
+       <li><a href="#" id="listviewnew_signout" class="ui-btn sio a_mar">
+      <span class="ww si">Sign Out <img src="images/signout.png" alt="" class="img_sign"></span></a></li>
+  </ul>
+   
+</div> 
+
+<!--panel end-->
+  
+
+      <!--panel ends-->
+      <div data-role="header" data-position="fixed" class="wow fadeInDown" data-wow-delay="0.2s">
+    <a href="#" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='1.2s' id="before_inpro"><img src="images/arrow.png" alt="" class="img_sign"></a>
+         <a href="#overlayPanelh" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='0.8s'><i class="zmdi zmdi-menu"></i></a>
+      <!--  <a href="#mypanel" data-role='button' data-inline='true'><i class='lIcon fa fa-bars'></i>Open panel</a> -->
+        <h1 class="wow fadeIn" data-wow-delay='0.4s' style="text-align:center;">Profile</h1>
+      </div>
+
+
+
+   <div role="main" class="ui-content" data-inset="false">
+
+   <a href="#" class="ui-btn ui-nodisc-icon ui-btn-icon-top full maintxt border">
+   <img src="images/createuser-icon.png" alt="Smiley face">
+   <br>
+   <span class="uppercase">Profile</span></a>
+
+   <div class="ui-grid-solo droparrow">
+      <div class="ui-block-a">
+        <a href="#" class="ui-link"><img src="images/drop-arrow.png"></a><br>
+       
+      </div>
+    </div>
+
+
+  <div class="col-xs-12 col-sm-6 col-md-4" style="margin-top: 20px;">
+
+
+  <div class="ui-grid-solo">
+    <div class="ui-block-a">
+
+   <div style="text-align:center; margin-top:5px;" class="document_imag_inpro"><!-- <img src="images/use.png"> --></div>
+   <div style="text-align:center; font-size:14px;font-weight: 600;" id="name_inpro">Pierre Borodin</div>
+   <div style="text-align:center; font-size:25px;font-weight: 400; margin-top:3px;color: #F83939;"><span id="percent_inpro"></span></div>
+
+<div style="margin-top:13px; color: #E8E8E8; border: solid 1px; width:100%"> </div>
+<div style="background-color: #58BF71; color: white; text-align: center; padding: 3px;" id="qualification_name_inpro">UG</div>
+
+  
+<div style="text-align:center; font-size:15px;font-weight: 400; margin-top:13px;">About Me</div>
+</div>
+
+
+
+<div class="ui-grid-solo">
+    <div class="ui-block-a ">
+     <ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
+      <li class="ui-li-has-icon ui-first- ui-first-child">
+      <a href="#" class="ui-btn ui-btn-icon- ui-icon- pad" style="background-color: #F0F0F0; border-color: #FFF;">
+      <img src="images/mobile/location.png" alt="USA" class="ui-li-icon profile t">
+      <span style="font-size: 15px; font-weight: 400;margin-left: 30px;" id="institute_inpro"></span></a>
+      </li>
+
+   <!--    <li class="ui-li-has-icon ui-first-">
+      <a href="#" class="ui-btn ui-btn-icon- ui-icon- pad" style="background-color: #F0F0F0; border-color: #FFF;">
+      <img src="images/msg.png" alt="USA" class="ui-li-icon profile t"><span style="font-size: 15px; font-weight: 400;">Carterblane@gmail.com</span></a>
+     </li> -->
+
+      <li class="ui-li-has-icon ui-first-">
+      <a href="#" class="ui-btn ui-btn-icon- ui-icon- pad" style="background-color: #F0F0F0; border-color: #FFF;">
+      <img src="images/mobile/institute.png" alt="USA" class="ui-li-icon profile t"><span style="font-size: 15px; font-weight: 400;margin-left: 30px;" id="location_inpro" ></span></a>
+      </li>
+
+      <li class="ui-li-has-icon ui-first- ui-last-child">
+      <a href="#" class="ui-btn ui-btn-icon- ui-icon- pad" style="background-color: #F0F0F0; border-color: #FFF;">
+      <img src="images/mobile/world.png" alt="USA" class="ui-li-icon profile t"><span style="font-size: 15px; font-weight: 400;margin-left: 30px;" id="pincode_inpro"></span></a>
+      </li>
+
+      <li class="ui-li-has-icon ui-first- ui-last-child">
+      <a href="#" class="ui-btn ui-btn-icon- ui-icon- pad" style="background-color: #F0F0F0; border-color: #FFF;">
+      <img src="images/mobile/state.png" alt="USA" class="ui-li-icon profile t"><span style="font-size: 15px; font-weight: 400;margin-left: 30px;">Tamilnadu</span></a>
+      </li>
+     
+      
+    
+     
+    </ul>
+  </div>
+</div>
+
+     <form action="#" form method="post" data-ajax="false" enctype="multipart/form-data" id="update_to_verified_inpro">
+<div class="ui-grid-solo">
+<div class="ui-block-a ">
+   <label for="textarea2b">Remarks<span style="color: rgb(246, 16, 63);">*</span></label>
+        <textarea cols="40" rows="8" name="textarea2" id="remark_inpro" placeholder="Remarks" class="ui-input-text ui-shadow-inset ui-body-inherit ui-corner-all ui-textinput-autogrow" style="height: 28px !important;"></textarea>
+</div>
+</div>
+
+<!-- <div id="select_inpro"></div> -->
+  <select id="s">
+     <option value="Inprogress">Select Status</option>
+     <option value="Inprogress">Inprogress</option>
+     <option value="Verified">Verified</option>
+  </select>  
+<br>
+
+<div class="ui-grid-solo bav">
+<div class="ui-block-a" >
+<h4 style="text-align:center">Previous Log</h4>
+<ul data-role="listview"  data-icon="false" data-divider-theme="b" id="logapp" style="margin-top:10px">
+
+<!--    <li><a href="index.php">
+                <img src="http://placehold.it/150x150">
+                <h2>Stephen Weber</h2>
+                <p>Hey Stephen, if you're available at 10am tomorrow, we've got a meeting with the jQuery team.</p>
+                <p class="ui-li-aside"><strong>6:24</strong>PM</p>
+            </a></li> -->
+</ul>
+<br>
+
+</div>
+</div>
+<br>
+      
+ <!--        <label for="pgAddBookBookImage">Upload Image<span class='red'>*</span></label>
+<input  required name="pgAddBookBookImage" title="Enter book image here." type="file" id="pgAddBookBookImage" placeholder="Enter book image here." autocomplete="off" data-clear-btn="true"></input>
+ --><br>
+<div class="ui-grid-solo">
+<div class="ui-block-a ">
+              <label for="textarea2b">Activities Log</label>
+       <!--  <textarea cols="40" rows="8" name="textarea2" id="" placeholder="Activities Log" class="ui-input-text ui-shadow-inset ui-body-inherit ui-corner-all ui-textinput-autogrow" style="height: 28px !important;"></textarea>
+ -->
+</div>
+</div>
+<div class="ui-grid-solo">
+<div class="ui-block-a grid_mar">
+<a href="#" class="ui-btn ui-corner-all ui-shadow submit-button" id="inpro_to_verified">Submit</a>
+</form>
+</div>
+</div>
+
+<br>
+ 
+
+  
+</div>          
+</div>
+</div>
+<div data-role="footer" data-position="fixed">
+<a href="#pageone" class="ui-btn ui-corner-all ui-shadow Cancel-button" style="width: 100%; text-align: center;">
+  <img src="images/mobile/download.png"></a><br>
+</div>
+</div>
+<!--iprogree ends-->
+
+
+<!--cordinator dashboard-->
+
+ <div data-role="page" id="co_dashboard">
+    <script type="text/javascript" src="js/co_dashboard.js"></script>
+      <!-- <nd2-include data-src="examples/fragments/panel.left.html"></nd2-include> -->
+
+      <div data-role="panel" id="bottomsheet" data-animate="false" data-position='bottom' data-display="overlay">
+    <!--     <nd2-include data-src="examples/fragments/bottom.sheet.html"></nd2-include> -->
+      </div>
+
+
+
+      <div data-role="header" data-position="fixed" class="wow fadeInDown" data-wow-delay="0.2s">
+       <a href="#" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='1.2s' id="dashlogout"><img src="images/logout1.png"></a>
+       <!--  <a href="#leftpanel" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='0.8s'><i class="zmdi zmdi-menu"></i></a> -->
+        <h1 class="wow fadeIn" data-wow-delay='0.4s' style="text-align:center;">Supervisor</h1>
+      </div>
+
+   <div class="ui-panel-wrapper" style="background-color:#282c35;background-size:100% 100%;">
+   <div role="main" class="ui-content" data-inset="false">
+<div id="demo">
+    <div class="ui-grid-solo" style="text-align: center;">
+    <div style="margin-top: 20px;">
+     <a style="text-align: center;color: white;" id="supervisor_name"></a>
+     <br>
+     <a style="text-align: center;color: white;font-size: 12px; font-weight: 300;" id="city_name"></a>
+   </div>
+
+    </div>
+    </div>
+
+  <div class="ui-grid-solo" style="margin-top: 20px;">
+     <div class="ui-grid-a ">
+
+
+    <div class="ui-block-a grid_main_1 ui-btn ui-corner-all ui-shadow logbutton waves-effect waves-button " id="co_new_verification">
+
+        <a href="#" class="waves-effect waves-button ui-link waves-effect waves-button waves-effect waves-button" style="text-decoration:none;"><img src="images/new-verification.png" class="img_pad_1" style="margin-right: -5px;">
+        <sup style="text-decoration:none;    vertical-align: 337%;
+    padding-top: -51% !important;
+   
+    text-decoration: none !important;
+    list-style: none;
+    background: #E24242;
+    border-radius: 50%;
+    color:#fff;
+       padding: 2% 4% 2% 5%;" id="co_new_veri_count">3</sup></a><br>
+        <p id="grid_opa_1"><span>Verification</span></p>
+      </div>
+       <div class="ui-block-b grid_main1_1  ui-btn ui-corner-all ui-shadow logbutton waves-effect waves-button" id="inprogress">
+        <a href="#" class="" style="    list-style: none;
+    text-decoration: none;
+    padding-bottom: 0%;"><img src="images/inprocess.png" class="img_pad_1" style="margin-right: -5px;">
+            <sup style="text-decoration:none;    vertical-align: 337%;
+    padding-top: -51% !important;
+   
+    text-decoration: none !important;
+    list-style: none;
+    background: #2572B3;
+    border-radius: 50%;
+    color:#fff;
+        padding: 2% 4% 2% 5%;" id="inprogress_count">3</sup>
+        </a><br>
+          <p id="grid_opa2_1">In progress</p>
+      </div>
+</div>
+
+
+<div class="ui-grid-solo">
+     <div class="ui-grid-a">
+      <div class="ui-block-a grid_main2_1 ui-btn ui-corner-all ui-shadow logbutton waves-effect waves-button ">
+
+        <a href="#" class="" style="text-decoration:none; "><img src="images/not-verified.png"  width="45" height="30" class="img_pad_1" style="margin-right: -5px;">
+            <sup style="text-decoration:none;    vertical-align: 337%;
+    padding-top: -51% !important;
+   
+    text-decoration: none !important;
+    list-style: none;
+    background: #32A582;
+    border-radius: 50%;
+    color:#fff;
+        padding: 2% 4% 2% 5%;">0</sup>
+        </a><br>
+        <p id="grid_opa3_1"><span>Not Verified</span></p>
+      </div>
+
+
+      <div class="ui-block-b grid_main3_1 ui-btn ui-corner-all ui-shadow logbutton waves-effect waves-button" id="verified">
+        <a href="#" class="" style="text-decoration:none; "><img src="images/verified.png" class="img_pad_1" style="margin-right: -5px;">
+            <sup style="text-decoration:none;    vertical-align: 337%;
+    padding-top: -51% !important;
+   
+    text-decoration: none !important;
+    list-style: none;
+    background: #A163E4;
+    border-radius: 50%;
+    color:#fff;
+        padding: 2% 4% 2% 5%;" id="verified_count">3</sup>
+        </a><br>
+          <p id="grid_opa4_1">Verified</p>
+      </div>
+    </div>
+</div>
+
+
+</div>
+</div>          
+</div>
+</div>
+<!--co_ordinator dashboard_end-->
+<!--co new verifi list start-->
+<div data-role="page" id="co_new_veri_list">
+    <script type="text/javascript" src="js/co_new_veri_list.js"></script>
+
+
+      <div data-role="panel" id="bottomsheet" data-animate="false" data-position='bottom' data-display="overlay">
+        <nd2-include data-src="examples/fragments/bottom.sheet.html"></nd2-include>
+      </div>
+
+
+    <!--panel-->
+
+ <div data-role="panel" id="overlayPanelcz" data-display="push" data-position="left" data-dismissible="false" data-swipe-close="false"> 
+
+  <div class='nd2-sidepanel-profile wow fadeInDown'>
+          <img class='profile-background' src="images/slide/slide-bg.png" />
+          <div class="row">
+            <div class='col-xs-12 center-xs'>
+              <div class='box box1'>
+                <img class="profile-thumbnail" src="images/slide/profile.png"  />
+             </div>
+            </div>
+             </div>
+              <div class="row" style="margin-top:5px">
+            <div class='col-xs-12 center-xs'>
+              <div class='box profile-text box1'>
+                  <strong id="supervisor_name_verilist">Jane Doe</strong>
+                <span class='subline' id="city_name_verilist">Super Power User</span>
+              
+          </div>
+        </div>
+        </div>
+
+            </div>
+
+      <ul data-role="listview" data-inset="true">
+      
+      <li id="dashboardlistinproveri"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "><span class="ww">Dashboard</span></a></li>
+       <li id="new_verilistfromverified"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "  ><span class="ww">New Verification</span></a></li>
+      <li id="inproveri"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right "  ><span class="ww">In Progress</span></a></li>
+      <li id="lpa_update_one"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right " ><span class="ww">Not verified</span></a></li>
+       <li><a href="#" id="listviewnew_signout" class="ui-btn sio a_mar">
+      <span class="ww si">Sign Out <img src="images/signout.png" alt="" class="img_sign"></span></a></li>
+  </ul>
+    <!--<a href="#" id="sih" class="ui-btn sio ui-icon-power ui-btn-icon-right">
+      <span class="ww si">Sign Out</span></a>-->
+</div> 
+
+<!--panel end-->
+      <div data-role="header" data-position="fixed" class="wow fadeInDown" data-wow-delay="0.2s">
+      <!--   <a href="#bottomsheet" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='1.2s'><i class="zmdi zmdi-more-vert"></i></a>
+         --><a href="#overlayPanelcz" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='0.8s'><i class="zmdi zmdi-menu"></i></a>
+        <h1 class="wow fadeIn" data-wow-delay='0.4s' style="text-align:center;">Verified</h1>
+      </div>
+
+
+   <div role="main" class="ui-content" data-inset="false">
+
+   <a href="#" class="ui-btn ui-nodisc-icon ui-btn-icon-top full maintxt border">
+   <img src="images/viewuser-icon.png" alt="Smiley face">
+   <br>
+   <span class="uppercase"> Verification</span></a>
+
+   <div class="ui-grid-solo droparrow">
+      <div class="ui-block-a">
+        <a href="#" class="ui-link waves-effect waves-button waves-effect waves-button waves-effect waves-button"><img src="images/drop-arrow.png"></a><br>
+       
+      </div>
+    </div>
+
+ <div class="ui-grid-solo">
+<div class="ui-block-a">
+<ul data-role="listview" data-icon="false"  >
+        <li data-role="list-divider"></li>
+
+
+
+
+<ul data-role="listview" data-inset="false" data-icon="false" data-divider-theme="b" id="list_align_verified" style="margin-top:10px;margin-left:10px;">
+
+</ul>
+
+      </div>
+    </div>
+
+ </div>
+
+  </div>
+
+
+<!--co new verifi list end-->
+
+<div data-role="page" id="pagedesign">
+ <script src="js/supervisor_inprogress_inside.js"></script>
+    <script src="js/jquery.rondell.js"></script>
+
+ <link rel="stylesheet" href="slide/examples/screen.css" type="text/css" media="all" title="Screen">
+    <link rel="stylesheet" href="slide/dist/jquery.rondell.css" type="text/css" media="all" title="Screen">
+    <script src="slide/libs/modernizr-2.0.6.min.js"></script>
+<!--  <nd2-include data-src="examples/fragments/panel.left.html"></nd2-include> -->
+
+
+
+      <div data-role="panel" id="bottomsheet" data-animate="false" data-position='bottom' data-display="overlay">
+        <nd2-include data-src="examples/fragments/bottom.sheet.html"></nd2-include>
+      </div>
+
+ <div data-role="panel" id="overlayPanelaoo" data-display="push" data-position="left" data-dismissible="false" data-swipe-close="false"> 
+
+  <div class='nd2-sidepanel-profile wow fadeInDown'>
+          <img class='profile-background' src="images/slide/slide-bg.png" />
+          <div class="row">
+            <div class='col-xs-12 center-xs'>
+              <div class='box'>
+                <img class="profile-thumbnail" src="images/slide/profile.png"  />
+             </div>
+            </div>
+             </div>
+              <div class="row" style="margin-top:5px">
+            <div class='col-xs-12 center-xs'>
+              <div class='box profile-text'>
+                   <strong id="supervisor_name_inprolistinside_o">Jane Doe</strong>
+                <span class='subline' id="city_name_inprolistinside_o">Super Power User</span>
+              
+          </div>
+        </div>
+        </div>
+
+            </div>
+
+      <ul data-role="listview" data-inset="true">
+      
+      <li id="dashboard_inpro_inside_op"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right"><span class="ww">Dashboard</span></a></li>
+    <li id="new_verification_inside_op"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right"><span class="ww">New Verification</span></a></li>
+      <li id="inproveri_inside_op"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right"><span class="ww">IN Progress</span></a></li>
+      <li id="inproveri_inside_neww_op"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right"><span class="ww">Verified</span></a></li>
+      <li id="verified_inpro_inside_inpro_op"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right"><span class="ww">Not verified</span></a></li>
+       <li id="listviewnew_signout_op"> <a href="#" id="listviewnew_signout" class="ui-btn sio ui-icon-power ui-btn-icon-right">
+      <span class="ww si" >Sign Out</span></a></li>
+  </ul>
+   <!-- <a href="#" id="listviewnew_signout" class="ui-btn sio ui-icon-power ui-btn-icon-right">
+      <span class="ww si" >Sign Out</span></a>-->
+</div> 
+<!--panel end-->
+
+      <div data-role="header" data-position="fixed" class="wow fadeInDown" data-wow-delay="0.2s">
+        <a href="#" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='1.2s' id="before_inpro">
+          <img src="images/back.png"></a>
+        <a href="#overlayPanelaoo" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='0.8s'>
+          <i class="zmdi zmdi-menu"></i></a>
+        <h1 class="wow fadeIn" data-wow-delay='0.4s' style="text-align:center;">IN PROGRESS</h1>
+         </div>
+
+<div data-role="main" class="ui-content">
+
+    <div class="column size1of2 " style="margin-left: -22px !important;">
+      <img src="slide/examples/images/sallery.jpg" alt="Rondell preview" class="hideOnJS">
+        <div id="rondellTopDemo" class="showOnJS hidden">
+     
+    
+<!--       <img src="http://115.118.113.83/watchguardlive/uploads/HLC  copy.jpg" alt="Band" title="My favourite band" class="rondell-item-image rondell-item-resizeable">
+        <img src="http://115.118.113.83/watchguardlive/uploads/HLC  copy.jpg" alt="Band" title="My favourite band" class="rondell-item-image rondell-item-resizeable">
+          <img src="http://115.118.113.83/watchguardlive/uploads/HLC  copy.jpg" alt="Band" title="My favourite band" class="rondell-item-image rondell-item-resizeable"> -->
+     
+  <!--slider div-->
+
+    <div class="document_imag_inprooneqa rondell-item rondell-item-focused  " style="opacity: 1; width: 149px; height: 200px; left: 125.5px; top: 10px; z-index: 1003; display: block;">
+
+    <div class=" rondell-item-overlay" style="height: auto; overflow: auto; opacity: 1; display: block;"></div></div> 
+
+
+    <div class="document_imag_inprooneqb rondell-item rondell-item-focused  " style="opacity: 1; width: 149px; height: 200px; left: 125.5px; top: 10px; z-index: 1003; display: block;">
+   
+    <div class="rondell-item-overlay" style="height: auto; overflow: auto; opacity: 1; display: block;"></div></div>    
+
+    <div class="document_imag_inprooneqc rondell-item rondell-item-focused  " style="opacity: 1; width: 149px; height: 200px; left: 125.5px; top: 10px; z-index: 1003; display: block;">
+   
+    <div class="rondell-item-overlay" style="height: auto; overflow: auto; opacity: 1; display: block;"></div></div>  
+
+     <div class="document_imag_inprooneqd rondell-item rondell-item-focused  " style="opacity: 1; width: 149px; height: 200px; left: 125.5px; top: 10px; z-index: 1003; display: block;">
+   
+    <div class="rondell-item-overlay" style="height: auto; overflow: auto; opacity: 1; display: block;"></div></div>  
+
+    <div class="document_imag_inprooneqe rondell-item rondell-item-focused  " style="opacity: 1; width: 149px; height: 200px; left: 125.5px; top: 10px; z-index: 1003; display: block;">
+   
+     <div class="rondell-item-overlay" style="height: auto; overflow: auto; opacity: 1; display: block;"></div></div>  
+
+   <div class="document_imag_inprooneqf rondell-item rondell-item-focused  " style="opacity: 1; width: 149px; height: 200px; left: 125.5px; top: 10px; z-index: 1003; display: block;">
+   
+     <div class="rondell-item-overlay" style="height: auto; overflow: auto; opacity: 1; display: block;"></div></div>  
+
+     <!--slider div end-->  
+
+      </div>
+      </div>
+
+       <div class="ui-grid-c grid-bottom " id="sda">
+
+      </div>
+
+
+<div class="ui-grid-solo">
+    <div class="ui-block-a ">
+     <ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow" id="lii">
+
+    </ul>
+    <br>
+<a href="#" class="ui-btn ui-corner-all ui-shadow grid_bg2" id="inprogressnextb">Update Activity</a>
+
+  </div>
+</div>
+
+
+    <div class="ui-grid-solo">
+      <div class="ui-block-a">
+                <!-- <a href="#" class="ui-btn ui-corner-all ui-shadow grid_bg1" id="inprogressnextb">Update Activity</a><br> -->
+        <a href="#" class=""></a><br>       
+      </div>
+    </div>
+
+</div>
+  <script type="text/javascript">
+(function() {
+  $("#rondellTopDemo").rondell({
+    preset: "",
+    radius: {
+      x: 130
+    },
+    center: {
+      left: 200,
+      top: 110
+    },
+    itemProperties: {
+      size: {
+        width: 100,
+        height: 100
+      }
+    }
+  });
+
+}).call(this);
+</script>
+</div>
+
+
+
+    <!--update activity-->
+
+  <div data-role="page" id="updateactivitya">
+
+   <script src="js/update_activitya.js"></script>
+
+     <!--  <nd2-include data-src="examples/fragments/panel.left.html"></nd2-include> -->
+
+      <div data-role="panel" id="bottomsheet" data-animate="false" data-position='bottom' data-display="overlay">
+        <nd2-include data-src="examples/fragments/bottom.sheet.html"></nd2-include>
+      </div>
+
+<!--panel-->
+<!--panel-->
+
+ <div data-role="panel" id="overlayPanela" data-display="push" data-position="left" data-dismissible="false" data-swipe-close="false"> 
+
+  <div class='nd2-sidepanel-profile wow fadeInDown'>
+          <img class='profile-background' src="images/slide/slide-bg.png" />
+          <div class="row">
+            <div class='col-xs-12 center-xs'>
+              <div class='box'>
+                <img class="profile-thumbnail" src="images/slide/profile.png"  />
+             </div>
+            </div>
+             </div>
+              <div class="row" style="margin-top:5px">
+            <div class='col-xs-12 center-xs'>
+              <div class='box profile-text'>
+                   <strong id="supervisor_name_inprolistinside_olo">Jane Doe</strong>
+                <span class='subline' id="city_name_inprolistinside_olo">Super Power User</span>
+              
+          </div>
+        </div>
+        </div>
+
+            </div>
+
+      <ul data-role="listview" data-inset="true">
+      
+      <li id="dashboard_inpro_inside_up"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right"><span class="ww">Dashboard</span></a></li>
+    <li id="inproveri_inside_neww_up"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right"><span class="ww">New Verification</span></a></li>
+      <li id="inproveri_inside_up"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right"><span class="ww">IN Progress</span></a></li>
+      <li id="verified_inpro_inside_up"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right"><span class="ww">Verified</span></a></li>
+      <li id="verified_inpro_inside_up_n"><a href="#" class="ui-btn ui-icon-carat-r ui-btn-icon-right"><span class="ww">Not verified</span></a></li>
+       <li id="listviewnew_signout_up"> <a href="#" id="listviewnew_signout" class="ui-btn sio ui-icon-power ui-btn-icon-right">
+      <span class="ww si" >Sign Out</span></a></li>
+  </ul>
+   <!-- <a href="#" id="listviewnew_signout" class="ui-btn sio ui-icon-power ui-btn-icon-right">
+      <span class="ww si" >Sign Out</span></a>-->
+</div> 
+
+
+      <div data-role="header" data-position="fixed" class="wow fadeInDown" data-wow-delay="0.2s">
+         <a href="#" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='1.2s' id="before_inprosdf_up">
+          <img src="images/back.png"></a>
+
+        <a href="#overlayPanela" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='0.8s' style="margin-top:-1px"><i class="zmdi zmdi-menu"></i></a>
+        <h1 class="wow fadeIn" data-wow-delay='0.4s' style="text-align:center;">Inprogress 2</h1>
+      </div>
+
+
+   <div role="main" class="ui-content" data-inset="false">
+
+
+    <ul data-role="listview" data-icon="false" style="margin-top: 0%;">
+
+        <li>
+          <a href="#">
+            <img src="images/slide/profile.png" class="ui-thumbnail ui-thumbnail-circular" />
+            <h2 style="margin-left: 90px;" id="msgheadera">Ethel Chancy</h2>
+            <p style="margin-left: 90px;" id="msgheaderb">ehtel.chancy@example.com</p>
+          </a>
+        </li>
+  
+      </ul>
+
+
+    <div id="box_2_1" style="min-height:35px;">
+
+   </div>
+
+        <!-- Simple Card with Title !-->
+
+        <div class="nd2-card" id="chat">
+
+          
+     
+          
+
+         </div>
+
+
+ <form action="" id="callAjaxForm">
+  
+    <div class="ui-grid-a" style="background-color: rgba(128, 128, 128, 0.07);     margin-top: 10%;">
+      <div class="ui-block-a" style="width:70%; height: 36px !important; margin: 0px 0px 0px 0px;">
+
+        <textarea name="messageText" id="messageText" class="ui-input-text ui-body-a ui-corner-all ui-shadow-inset" placeholder="This is text area" style="width: 100%; height:40px;"></textarea>
+        
+          </div>
+
+          <div class="ui-block-b" style="width:30%;">
+        <button data-theme="a" id="chatSendButton" name="chatSendButton" style="background-color: #1bbc9b !important;border-color: rgba(221, 221, 221, 0) !important;color:#F0F0F0!important;
+    text-shadow: 0 1px 0;border-radius:0px;">Update</button>
+ </div>
+   </div>
+   </form>
+
+
+<br><br>
+   <!--radio button-->
+<!--check boxes-->
+<form action="" id="radioupload">
+<div class="ui-grid-a">
+     <legend style="text-align:center;    width: 30%;
+    margin: 0 auto;"></legend>
+  <div class="ui-block-a" style="width:65% !important;">
+    <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+                         
+                            <input type="radio" name="radio-choice-a" id="radio-choice-ab" value="Inprogress" checked="checked">
+                            <label for="radio-choice-ab">Inprogress</label>
+                            <input type="radio" name="radio-choice-a" id="radio-choice-bb" value="Verified">
+                            <label for="radio-choice-bb">Verified</label>
+                            
+                          
+                        </fieldset>
+
+  </div>
+  <div class="ui-block-b" style="width:35% !important;">
+  <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+    <input type="radio" name="radio-choice-a" id="radio-choice-cb" value="Notverified">
+                            <label for="radio-choice-cb">Notverified</label>
+
+                            </fieldset>
+  </div>
+
+</div>
+
+
+         
+<!--radio button end-->            
+<br><br>
+ <label for="pgAddBookBookImage">Upload Image<span class='red'></span></label>
+ <div class="upload">
+      
+<input  required name="pgAddBookBookImage" title="Enter book image here." type="file" id="pgAddBookBookImage" placeholder="Enter book image here." autocomplete="off" data-clear-btn="true"></input>
+    </div>
+    <br>
+
+
+
+</div>
+ <div data-role="footer" data-position="fixed" data-fullscreen="false" class="ui-footer ui-bar-inherit ui-footer-fixed ui-fixed-hidden">
+      <div class="ui-grid-a">
+      <div class="ui-block-a" style="    border-right: 1px solid #bbb;">
+         <div class="box" style="text-align: center;    padding-top: 2%;">
+         <a href="#" class="ui-btn ui-mini nd2-btn-icon-block" id="savetoveriornot" style="color: #4CAF50;"><i class=""></i>Save</a>
+       </div>
+      </div>
+      <div class="ui-block-b">
+         <div class="box" style="text-align: center;    padding-top: 2%;">
+         <a href="#" class="ui-btn ui-mini nd2-btn-icon-block" id="cancelbacktoinprolist" style="color: red;"><i class=""></i>Cancel</a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+   </form>
+
+<!--update activity ends-->
+    
+  
+</div>
+</div>
+	
+	
+      
+
+	<script src="vendor/waves/waves.min.js"></script>
+	<script src="vendor/wow/wow.min.js"></script>
+	<script src="js/nativedroid2.js"></script>
+	
+
+  
+
+	</body>
+</html>
+
